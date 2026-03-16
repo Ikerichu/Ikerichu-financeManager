@@ -55,3 +55,15 @@ class Transaction(db.Model):
 
     user: Mapped["User"] = relationship(back_populates="transactions")
     category: Mapped["Category"] = relationship(back_populates="transactions")
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "amount": self.amount,
+            "description": self.description,
+            "type": self.type,
+            "date": self.date.isoformat() if self.date else None,
+            "user_id": self.user_id,
+            "category_id": self.category_id,
+            "category": self.category.name if self.category else None
+        }
