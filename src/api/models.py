@@ -32,6 +32,12 @@ class Category(db.Model):
 
     transactions: Mapped[List["Transaction"]] = relationship(back_populates="category")
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
+
 class Transaction(db.Model):
     __tablename__ = "transactions"
 
