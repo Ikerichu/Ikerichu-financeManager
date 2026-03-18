@@ -1,19 +1,35 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
 export const Navbar = () => {
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container">
+          <a className="navbar-brand" href="/">
+            FinanceManager
+          </a>
 
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
+          <div className="ms-auto d-flex gap-2">
+            {/* Botón Login */}
+            <button
+              className="btn btn-outline-light"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </button>
+
+            {/* Botón Register */}
+            <button
+              className="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 };
