@@ -33,33 +33,66 @@ export const Navbar = () => {
 	  <div className="modal fade" id="loginModal" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-
             <div className="modal-header">
               <h5 className="modal-title">Login</h5>
               <button className="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
             <div className="modal-body">
               <form>
                 <div className="mb-3">
                   <label className="form-label">Email</label>
                   <input type="email" className="form-control" />
                 </div>
-
                 <div className="mb-3">
                   <label className="form-label">Password</label>
                   <input type="password" className="form-control" />
                 </div>
               </form>
             </div>
-
             <div className="modal-footer">
               <button className="btn btn-secondary" data-bs-dismiss="modal">
                 Close
               </button>
               <button className="btn btn-primary">Login</button>
             </div>
+          </div>
+        </div>
+      </div>
+	  
 
+	  <div className="modal fade" id="registerModal" tabIndex="-1">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Register</h5>
+              <button className="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Last Name</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" className="form-control" />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Password</label>
+                  <input type="password" className="form-control" />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button className="btn btn-primary">Register</button>
+            </div>
           </div>
         </div>
       </div>
