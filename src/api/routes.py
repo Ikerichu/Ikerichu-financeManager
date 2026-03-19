@@ -11,7 +11,7 @@ api = Blueprint('api', __name__)
 # Allow CORS requests to this API
 CORS(api)
 
-@api.route('/transactions', methods=['GET'])
+@api.route('/api/transactions', methods=['GET'])
 def get_transactions():
     transactions = Transaction.query.all()
     return jsonify([t.serialize() for t in transactions])
