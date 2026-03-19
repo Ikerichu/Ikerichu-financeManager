@@ -47,3 +47,31 @@ def register():
     db.session.commit()
 
     return jsonify({"msg": "User created successfully"}), 201
+
+
+@api.route("/login", methods=["POST"])
+def login():
+    data = request.json
+
+    email = data.get("email")
+    password = data.get("password")
+
+    if not email or not password:
+        return jsonify({"msg": "Missing credentials"}), 400
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user or not bcrypt.check_password_hash(user.password, password):
+        return jsonify({"msg": "Invalid email or password"}), 401
+
+    token = create_access_token(identity=user.id)
+
+    return jsonify({
+        "msg": "Login successful",
+        "token": token,
+        "user": {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email
+        }
+    }), 200
