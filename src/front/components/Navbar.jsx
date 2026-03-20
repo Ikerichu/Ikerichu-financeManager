@@ -115,7 +115,7 @@ export const Navbar = () => {
               </form>
             </div>
             <div className="modal-footer">
-              <button className="btn btn-secondary" data-bs-dismiss="modal">
+              <button id="loginModalClose" className="btn btn-secondary" data-bs-dismiss="modal">
                 Close
               </button>
               <button className="btn btn-primary" onClick={handleLogin}>
@@ -159,7 +159,7 @@ export const Navbar = () => {
               </form>
             </div>
             <div className="modal-footer">
-              <button className="btn btn-secondary" data-bs-dismiss="modal">
+              <button id="registerModalClose" className="btn btn-secondary" data-bs-dismiss="modal">
                 Close
               </button>
               <button className="btn btn-primary" onClick={handleRegister}>
