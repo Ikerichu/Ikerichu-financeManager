@@ -15,6 +15,31 @@ export const Navbar = () => {
     password: ""
   });
 
+  const handleLogin = async () => {
+  try {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(loginData)
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      alert("Login correcto");
+
+      document.getElementById("loginModalClose").click();
+    } else {
+      alert(data.msg);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
