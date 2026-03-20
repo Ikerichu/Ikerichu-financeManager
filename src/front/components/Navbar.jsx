@@ -16,29 +16,53 @@ export const Navbar = () => {
   });
 
   const handleLogin = async () => {
+    try {
+      const res = await fetch("/api/login", {
+       method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+       },
+       body: JSON.stringify(loginData)
+     });
+
+      const data = await res.json();
+
+     if (res.ok) {
+        localStorage.setItem("token", data.token);
+        alert("Login correcto");
+
+        document.getElementById("loginModalClose").click();
+      } else {
+       alert(data.msg);
+     }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleRegister = async () => {
   try {
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(loginData)
+      body: JSON.stringify(registerData)
     });
 
     const data = await res.json();
 
     if (res.ok) {
-      localStorage.setItem("token", data.token);
-      alert("Login correcto");
+      alert("Usuario creado");
 
-      document.getElementById("loginModalClose").click();
+      document.getElementById("registerModalClose").click();
     } else {
       alert(data.msg);
     }
   } catch (error) {
     console.error(error);
   }
-};
+  };
 
   return (
     <>
