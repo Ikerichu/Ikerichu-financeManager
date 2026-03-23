@@ -66,6 +66,11 @@ export const Navbar = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -96,7 +101,7 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-               
+
                 <button className="btn btn-outline-light">
                   {user.name}
                 </button>
