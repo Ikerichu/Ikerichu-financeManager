@@ -81,7 +81,7 @@ def login():
 def profile():
     user_id = get_jwt_identity()
 
-    user = User.query.get(user_id)
+    user = db.session.get(User, user_id)
 
     if not user:
         return jsonify({"msg": "User not found"}), 404
