@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch(`${VITE_BACKEND_URL}/transactions`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/transactions`)
       .then(res => res.json())
       .then(data => setTransactions(data))
       .catch(err => console.error(err));

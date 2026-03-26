@@ -13,7 +13,7 @@ export const Profile = () => {
       return;
     }
 
-    fetch("/api/profile", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, {
       headers: {
         Authorization: "Bearer " + token
       }

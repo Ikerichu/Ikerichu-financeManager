@@ -1,6 +1,5 @@
-import React from "react";
 import React, { useState, useEffect } from "react";
-import Link from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export const Navbar = () => {
 
@@ -20,7 +19,7 @@ export const Navbar = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -32,7 +31,7 @@ export const Navbar = () => {
 
       if (res.ok) {
         localStorage.setItem("token", data.token);
-        
+
         setUser(data.user);
         alert("Login correcto");
 
@@ -47,7 +46,7 @@ export const Navbar = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -99,9 +98,9 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <a className="navbar-brand" Link to="/">
+          <Link className="navbar-brand" to="/">
             TrackMyMoney
-          </a>
+          </Link>
 
           <div className="ms-auto d-flex gap-2">
 
@@ -126,9 +125,9 @@ export const Navbar = () => {
             ) : (
               <>
 
-                <button className="btn btn-outline-light" Link to="/profile">
+                <Link to="/profile" className="btn btn-outline-light">
                   {user.name}
-                </button>
+                </Link>
 
                 <button className="btn btn-danger" onClick={handleLogout}>
                   Logout
