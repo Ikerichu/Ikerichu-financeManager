@@ -74,11 +74,11 @@ export const Profile = () => {
                 </div>
               </div>
 
-              <div className="d-grid mt-4">
+              {/*<div className="d-grid mt-4">
                 <button className="btn btn-primary">
                   Editar perfil
                 </button>
-              </div>
+              </div>*/}
 
             </div>
           </div>
