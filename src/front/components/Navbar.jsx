@@ -100,7 +100,7 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand text-white" to="/">
             TrackMyMoney
           </Link>
 
@@ -109,7 +109,7 @@ export const Navbar = () => {
             {!user ? (
               <>
                 <button
-                  className="btn btn-outline-light"
+                  className="btn btn-primary btn-outline-light"
                   data-bs-toggle="modal"
                   data-bs-target="#loginModal"
                 >
@@ -117,7 +117,7 @@ export const Navbar = () => {
                 </button>
 
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-success btn-outline-light"
                   data-bs-toggle="modal"
                   data-bs-target="#registerModal"
                 >
@@ -127,11 +127,11 @@ export const Navbar = () => {
             ) : (
               <>
 
-                <Link to="/profile" className="btn btn-outline-light txt-capitalize">
+                <Link to="/profile" className="btn btn-primary btn-outline-light txt-capitalize">
                   {user.name}
                 </Link>
 
-                <button className="btn btn-danger" onClick={handleLogout}>
+                <button className="btn btn-danger btn-outline-light" onClick={handleLogout}>
                   Logout
                 </button>
               </>
