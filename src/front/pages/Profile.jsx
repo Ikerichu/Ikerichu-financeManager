@@ -10,7 +10,33 @@ export const Profile = () => {
     password: ""
   });
 
+  const handleEdit = async () => {
+    try {
+      const token = initialStore.token || localStorage.getItem("token");
 
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        },
+        body: JSON.stringify(editData)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Perfil actualizado");
+        setUser(data);
+        setEditData({ email: "", password: "" });
+        document.getElementById("editModalClose").click();
+      } else {
+        alert(data.msg);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     const token = initialStore.token || localStorage.getItem("token");
