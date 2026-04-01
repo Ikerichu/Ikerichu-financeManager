@@ -5,6 +5,12 @@ import { initialStore } from "../store";
 export const Profile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [editData, setEditData] = useState({
+    email: "",
+    password: ""
+  });
+
+
 
   useEffect(() => {
     const token = initialStore.token || localStorage.getItem("token");
@@ -72,17 +78,51 @@ export const Profile = () => {
                 </div>
               </div>
 
-              {/*<div className="d-grid mt-4">
-                <button className="btn btn-primary">
+              <div className="d-grid mt-4">
+                <button className="btn btn-primary btn-outline-light" data-bs-toggle="modal" data-bs-target="#editModal">
                   Editar perfil
                 </button>
-              </div>*/}
+              </div>
 
             </div>
           </div>
 
         </div>
       </div>
+
+    <div className="modal fade" id="editModal" tabIndex="-1">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Editar Perfil</h5>
+              <button className="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input type="email" className="form-control"
+                    onChange={(e) => setEditData({ ...editData, email: e.target.value })} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Password</label>
+                  <input type="password" className="form-control"
+                    onChange={(e) => setEditData({ ...editData, password: e.target.value })} />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button id="editModalClose" className="btn btn-secondary btn-outline-light" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button className="btn btn-primary btn-outline-light" onClick={handleEdit}>
+                Editar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
