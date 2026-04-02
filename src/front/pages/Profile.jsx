@@ -126,12 +126,12 @@ export const Profile = () => {
             <div className="modal-body">
               <form>
                 <div className="mb-3">
-                  <label className="form-label">Email</label>
+                  <label className="form-label text-muted mb-1">Email</label>
                   <input type="email" className="form-control"
                     onChange={(e) => setEditData({ ...editData, email: e.target.value })} />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Password</label>
+                  <label className="form-label text-muted mb-1">Password</label>
                   <input type="password" className="form-control"
                     onChange={(e) => setEditData({ ...editData, password: e.target.value })} />
                 </div>
