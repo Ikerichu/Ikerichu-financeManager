@@ -125,3 +125,22 @@ def create_transaction():
     db.session.commit()
 
     return jsonify({"msg": "Transaction created"}), 201
+
+    @api.route("/profile", methods=["POST"])
+    @jwt_required()
+    def update_profile():
+        user_id = get_jwt_identity()
+        data = request.json
+
+        user = db.session.get(User, int(user_id))
+
+        if not user:
+            return jsonify({"msg": "User not found"}), 404
+
+        user.name = data.get("name", user.name)
+        user.lastname = data.get("lastname", user.lastname)
+        user.email = data.get("email", user.email)
+
+        db.session.commit()
+
+        return jsonify({"msg": "Profile updated"}), 200
