@@ -75,7 +75,30 @@ export const Home = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!token) return;
 
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/transactions/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        }
+      );
+
+      if (res.ok) {
+        alert("Transacción eliminada");
+        await fetchTransactions();
+      } else {
+        alert("Error al eliminar la transacción");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="container mt-4">
@@ -205,7 +228,7 @@ export const Home = () => {
               >
                 {t.type === "income" ? "+" : "-"}€{t.amount}
               </span>
-              <button className="btn btn-danger btn-sm" onClick={() => handleDeleteTransaction(t.id)}>
+              <button className="btn btn-danger btn-sm" onClick={() => handleDelete(t.id)}>
                 Eliminar
               </button>
             </div>
