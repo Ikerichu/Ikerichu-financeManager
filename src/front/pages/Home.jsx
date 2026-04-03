@@ -65,7 +65,7 @@ export const Home = () => {
         alert("Transacción añadida");
 
         document.getElementById("closeTransactionModal").click();
-        setTransaction({amount: "", type: "expense", description: ""});
+        setTransaction({ amount: "", type: "expense", description: "" });
         await fetchTransactions();
       } else {
         alert(data.msg);
@@ -74,6 +74,8 @@ export const Home = () => {
       console.error(error);
     }
   };
+
+
 
   return (
     <div className="container mt-4">
@@ -203,6 +205,9 @@ export const Home = () => {
               >
                 {t.type === "income" ? "+" : "-"}€{t.amount}
               </span>
+              <button className="btn btn-danger btn-sm" onClick={() => handleDeleteTransaction(t.id)}>
+                Eliminar
+              </button>
             </div>
           ))}
         </div>
