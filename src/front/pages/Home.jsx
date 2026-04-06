@@ -220,7 +220,7 @@ export const Home = () => {
                 <br />
                 <small className="text-muted">{t.category}</small>
               </div>
-
+              
               <span
                 className={
                   t.type === "income" ? "text-success fw-bold" : "text-danger fw-bold"

@@ -126,9 +126,9 @@ def create_transaction():
 
     return jsonify({"msg": "Transaction created"}), 201
 
-    @api.route("/profile", methods=["POST"])
-    @jwt_required()
-    def update_profile():
+@api.route("/profile", methods=["POST"])
+@jwt_required()
+def update_profile():
         user_id = get_jwt_identity()
         data = request.json
 
@@ -144,3 +144,18 @@ def create_transaction():
         db.session.commit()
 
         return jsonify({"msg": "Profile updated"}), 200
+
+@api.route("/transactions/<int:transaction_id>", methods=["DELETE"])
+@jwt_required()
+def delete_transaction(transaction_id):
+    user_id = int(get_jwt_identity())
+
+    transaction = Transaction.query.filter_by(id=transaction_id, user_id=user_id).first()
+
+    if not transaction:
+        return jsonify({"msg": "Transaction not found"}), 404
+
+    db.session.delete(transaction)
+    db.session.commit()
+
+    return jsonify({"msg": "Transaction deleted"}), 200
