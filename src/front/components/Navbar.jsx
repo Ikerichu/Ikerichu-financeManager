@@ -49,7 +49,10 @@ export const Navbar = () => {
 
   const handleRegister = async () => {
     try {
-      
+      if(registerData.password.length < 6) {
+        toast.error("La contraseña debe tener al menos 6 caracteres");
+        return;
+      }
 
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
         method: "POST",
