@@ -1,2 +1,2 @@
 
-Aplicación web para llevar al día los gastos e ingresos. Creada con sql, react, Python y node.js.
+Aplicación web para llevar al día los gastos e ingresos. Creada con sql, react, Python y node.js. Sé han utilizado Api Rest para la creación y verificación de usuarios, también para la creación de ingresos y gastos.
